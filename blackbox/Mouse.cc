@@ -1,0 +1,31 @@
+#include "Mouse.hh"
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// Mouse Implementation
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+namespace Mouse {
+
+
+  bool IsButtonPressed(Uint8 p_button) {
+
+    return SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(p_button);
+  }
+
+  glm::ivec2 GetMousePosition() {
+
+    int x, y;
+    SDL_GetGlobalMouseState(&x, &y);
+    return glm::ivec2{x, y};
+  }
+
+  glm::ivec2 GetMouseDelta() {
+
+    int x, y;
+    SDL_GetRelativeMouseState(&x, &y);
+    return glm::ivec2{x, y};
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
